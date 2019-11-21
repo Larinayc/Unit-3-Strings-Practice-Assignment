@@ -1,25 +1,36 @@
 
 public class PigLatin
 {
+
     public static void main(String args[]){
-        pigLatin("car ");
-        pigLatin("I love starcraft");
+        wordSeperator("a");
+        wordSeperator("car");
+        wordSeperator("I love starcraft");
+        
     }
 
-    public static void pigLatin(String str)
+    public static void wordSeperator(String str){
+        str=str+" ";
+        int b=0;
+        for(int i=0; i<str.length(); i++){
+            
+            if(str.charAt(i)==' '){
+                String word=str.substring(b,i);
+                System.out.print(pigLatin(word));
+                b=i+1;
+            }
+        }
+        System.out.println("");
+    }
+
+    public static String pigLatin(String word)
     {
-        String ans="";
-        if(str.length()<=2){
-            System.out.println(str);
+        if(word.length()<2){
+            return word+" ";
         }
         else{
-            for(int i=0; i<str.length()-1; i++){
-                if(str.substring(i,i+1).equals("")){
-                    ans=ans+str.substring(0,i)+str.charAt(0)+"ay ";
-                }
-            }
-            System.out.println(ans);
-            
+            return word.substring(1,word.length())+word.charAt(0)+"ay ";
         }
     }
 }
+
